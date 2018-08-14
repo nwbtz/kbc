@@ -8,11 +8,20 @@
 
 {{-- page level styles --}}
 @section('header_styles')
-    <link href="{{ asset('assets/vendors/summernote/summernote.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/vendors/summernote/summernote.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">
-    <link href="{{ asset('assets/css/pages/blog.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/pages/blog.css') }}" rel="stylesheet" type="text/css"> --}}
+
+    <link href="{{ asset('assets/vendors/summernote/summernote.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
 
     <!--end of page level css-->
 @stop

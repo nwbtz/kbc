@@ -112,61 +112,45 @@ Blog
                             <!-- //Nav Nav-tabs End -->
                             <!-- Tab-content Start -->
                             <div class="tab-content">
+                                {{-- tab1 --}}
                                 <div class="tab-pane active" id="tab_default_1">
+                                        @forelse ($popBlog as $pop)
                                     <div class="media">
                                         <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
-                                            <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_3.jpg') }}" alt="image">
-                                            </a>
+                                            @if($pop->image)    
+                                            <a href="#"><img class="media-object img-responsive" src="{{ URL::to('/uploads/blog/'.$pop->image)  }}" alt="image"> </a>
+                                            @endif
                                         </div>
                                     </div>
-                                    <h4 class="text-primary">Jelly-o sesame snaps</h4>
-                                    <p>
-                                        Extraordinary claims require extraordinary evidence globular star cluster great turbulent clouds dispassionate extraterrestrial observer hearts of the stars. Jean-François Champollion Euclid the sky. 
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="#">Read more</a>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
-                                            <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_5.jpg') }}" alt="image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-primary">Fishing cayenne bisque cayenne</h4>
-                                    <p>
-                                        The Love Boat soon will be making another run. The Love Boat promises something for everyone. On the most sensational inspirational celebrational Muppetational. This is what we call the Muppet Show.
-                                    </p>
-                                    <div class="text-right primary"><a href="#">Read more</a>
-                                    </div>
+                                    {{-- <h3 class="primary"><a href="{{ URL::to('blogitem/'.$blog->slug) }}">{{$blog->title}}</a></h3> --}}
+                                    <h4 class="text-primary">{{$pop->title}}</h4>
+                                    <p> {!! $pop->content !!} </p>
+                                    <div class="media-left pull-right  primary marbtm"><a href="{{ URL::to('blogitem/'.$pop->slug) }}">Read more</a></div>
+                                    <div class="media-left pull-left primary marbtm">{{$pop->views}} Views</div>
+                                   <br> <hr>
+                                   @empty
+                                    No Popular Post
+                                    @endforelse
                                 </div>
+                                {{-- tab2 --}}
                                 <div class="tab-pane" id="tab_default_2">
+                                    @forelse ($recent as $rec)
                                     <div class="media">
-                                        <div class="media-left media-middle tab col-sm-12 col-xs-12">
-                                            <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_5.jpg') }}" alt="image">
-                                            </a>
+                                        <div class="media-left pull-right media-middle tab col-sm-12 col-xs-12">
+                                                @if($rec->image)    
+                                                <a href="#"><img class="media-object img-responsive" src="{{ URL::to('/uploads/blog/'.$rec->image)  }}" alt="image"> </a>
+                                                @endif
+                                                
                                         </div>
                                     </div>
-                                    <h4 class="text-primary">Come along, Pond. Allons-y</h4>
-                                    <p>
-                                        Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.
-                                    </p>
-                                    <div class="text-right primary marbtm"><a href="#">Read more</a>
-                                    </div>
-                                    <div class="media">
-                                        <div class="media-left tab col-sm-6 col-md-12 col-xs-12">
-                                            <a href="#">
-                                                <img class="media-object img-responsive" src="{{ asset('assets/images/img_3.jpg') }}" alt="image">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <h4 class="text-primary">Jelly-o sesame snaps</h4>
-                                    <p>
-                                        Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby.
-                                    </p>
-                                    <div class="text-right primary"><a href="#">Read more</a>
-                                    </div>
+                                    <h4 class="text-primary">{{$rec->title}}</h4>
+                                    <p> {!! $rec->content !!} </p>
+                                    <div class="media-left pull-right  primary marbtm"><a href="{{ URL::to('blogitem/'.$rec->slug) }}">Read more</a></div>
+                                    <div class="media-left pull-left primary marbtm text-danger">Posted : {!!$rec->created_at->diffForHumans()!!}</div>
+                                   <br> <hr>
+                                   @empty
+                                    No Popular Post
+                                    @endforelse
                                 </div>
                             </div>
                             <!-- //Tab-content End -->
@@ -177,56 +161,27 @@ Blog
                     <div class="the-box recent">
                         <h3 class="small-heading text-center">Recent Comments</h3>
                         <ul class="media-list media-xs media-dotted">
+                         @forelse($comments as $comment)
                             <li class="media">
                                 <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                    <img src="{{ asset('assets/images/authors/no_avatar.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
                                 </a>
                                 <div class="media-body">
+                                       
                                     <h4 class="media-heading primary">
-                                                        <a href="#">Elizabeth Owens at Duis autem vel eum iriure dolor in hendrerit in</a>
+                                    <a href="#">{{$comment->name}}</a> 
                                                     </h4>
                                     <p class="date">
-                                        <small class="text-danger">2hours ago</small>
+                                        <small class="text-danger">{!! $comment->created_at->diffForHumans()!!}</small>
                                     </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
+                                    <p class="small">{{$comment->comment}}</p>
+                                    
                                 </div>
                             </li>
                             <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar1.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">5hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
-                            <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">10hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
+                           @empty              
+                            <h3>No Recent Blog Comments !</h3>
+                        @endforelse
                         </ul>
                     </div>
                     <div class="thumbnail">

@@ -13,7 +13,7 @@
     <![endif]-->
     <title>
     	@section('title')
-        | Welcome to Anivet Clinic
+        | Welcome to KBC club
         @show
     </title>
     <!--global css starts-->
@@ -205,15 +205,15 @@
             <div class="col-sm-4">
                 <h4>Contact Us</h4>
                 <ul class="list-unstyled">
-                    <li>35,Lorem Lis Street, Park Ave</li>
-                    <li>Lis Street, India.</li>
-                    <li><i class="livicon icon4 icon3" data-name="cellphone" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i>Phone:9140 123 4588</li>
-                    <li><i class="livicon icon4 icon3" data-name="printer" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Fax:400 423 1456</li>
+                    <li>76292,Posta</li>
+                    <li>Dar es Salaam, Tanzaniaa.</li>
+                    <li><i class="livicon icon4 icon3" data-name="cellphone" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i>Phone:+255765119119</li>
+                    <li><i class="livicon icon4 icon3" data-name="printer" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Fax:+255765119119</li>
                     <li><i class="livicon icon3" data-name="mail-alt" data-size="20" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Email:<span class="text-success" style="cursor: pointer;">
-                        info@joshadmin.com</span>
+                        info@nwb.co.tz</span>
                     </li>
                     <li><i class="livicon icon4 icon3" data-name="skype" data-size="18" data-loop="true" data-c="#ccc" data-hc="#ccc"></i> Skype:
-                        <span class="text-success"  style="cursor: pointer;">Joshadmin</span>
+                        <span class="text-success"  style="cursor: pointer;">KBCAdmin</span>
                     </li>
                 </ul>
                 <hr id="hr_border">
@@ -285,7 +285,7 @@
     <!-- //Footer Section End -->
     <div class="copyright">
         <div class="container">
-        <p>Copyright &copy; Josh Admin Template, 2017</p>
+        <p>Copyright &copy; KBC club, 2018 developed by <a href="https://www.nwb.co.tz">NWB</a></p>
         </div>
     </div>
     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top" data-toggle="tooltip" data-placement="left">

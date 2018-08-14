@@ -131,56 +131,31 @@
                 <div class="the-box">
                         <h3 class="small-heading text-center">Recent Posts</h3>
                         <ul class="media-list media-xs media-dotted">
+                           
+                        @forelse ($recent as $rec)
+                           
                             <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar1.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
+                                <a class="pull-left" href="{{ URL::to('blogitem/'.$rec->slug) }}">
+                                    @if ($rec->image)
+                                      <img src="{{ URL::to('/uploads/blog/'.$rec->image) }}" class="img-circle img-responsive pull-left" alt="riot">
+                                    @else
+                                      <img src="{{ asset('assets/images/authors/no_image.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">  
+                                    @endif
+                                    
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Elizabeth Owens at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
+                                    <h4 class="media-heading primary"><a href="{{ URL::to('blogitem/'.$rec->slug) }}">{{$rec->title}}</a></h4>
                                     <p class="date">
-                                        <small class="text-danger">2hours ago</small>
+                                        <small class="text-danger">{!!$rec->created_at->diffForHumans()!!}</small>
                                     </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
+                                    <p class="small">{!! $rec->content !!}</p>
                                 </div>
                             </li>
                             <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar4.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Harold Chavez at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">5hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
-                            <hr>
-                            <li class="media">
-                                <a class="pull-left" href="#">
-                                    <img src="{{ asset('assets/images/authors/avatar5.jpg') }}" class="img-circle img-responsive pull-left" alt="riot">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading primary">
-                                                        <a href="#">Mihaela Cihac at Duis autem vel eum iriure dolor in hendrerit in</a>
-                                                    </h4>
-                                    <p class="date">
-                                        <small class="text-danger">10hours ago</small>
-                                    </p>
-                                    <p class="small">
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo
-                                    </p>
-                                </div>
-                            </li>
+                            @empty
+                            No Recent Post    
+                            
+                            @endforelse                       
                         </ul>
                 </div>
                 <!-- /.the-box .bg-primary .no-border .text-center .no-margin -->

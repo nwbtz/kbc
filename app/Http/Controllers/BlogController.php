@@ -24,6 +24,7 @@ class BlogController extends JoshController
     {
         parent::__construct();
         $this->tags = Blog::allTags();
+
     }
 
     /**
@@ -33,9 +34,13 @@ class BlogController extends JoshController
     {
         // Grab all the blogs
         $blogs = Blog::latest()->paginate(5);
+        $recent =Blog::latest()->orderBy('created_at','DESC')->limit(3)->get();
+        $popBlog = Blog::orderBy('views','DESC')->limit(3)->get();
+        $comments =BlogComment::latest()->orderBy('created_at','DESC')->limit(3)->get();
         $tags = $this->tags;
+       
         // Show the page
-        return view('blog', compact('blogs', 'tags'));
+        return view('blog', compact('blogs','recent','popBlog','comments', 'tags'));
     }
 
     /**
@@ -46,13 +51,14 @@ class BlogController extends JoshController
     {
 
         $blog = Blog::where('slug', $slug)->first();
+        $recent =Blog::latest()->orderBy('created_at','DESC')->limit(3)->get();        
         if ($blog) {
             $blog->increment('views');
         } else {
             abort('404');
         }
         // Show the page
-        return view('blogitem', compact('blog'));
+        return view('blogitem', compact('blog','recent'));
     }
 
     /**
